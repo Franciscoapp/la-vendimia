@@ -1,0 +1,27 @@
+{
+  "name": "la-vendimia",
+  "version": "1.0.0",
+  "description": "Examen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Franciscoapp/la-vendimia.git"
+  },
+  "author": "Francisco Antonio Peña Pérez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Franciscoapp/la-vendimia/issues"
+  },
+  "homepage": "https://github.com/Franciscoapp/la-vendimia#readme",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-ui-bootstrap": "^2.0.1",
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.24.0"
+  }
+}
