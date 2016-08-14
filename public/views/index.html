@@ -4,14 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/">
     <title>La Vendimia</title>
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <script src="/angular/angular.js"></script>
+    <script src="/angular-route/angular-route.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/angular-touch/angular-touch.js"></script>
     <script src="/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script src="/moment/min/moment.min.js"></script>
-    <script src="/js/index.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/config.js"></script>
+    <script src="/js/controllers/main.js"></script>
+    <script src="/js/controllers/sales.js"></script>
+    <script src="/js/controllers/clients.js"></script>
+    <script src="/js/controllers/articles.js"></script>
+    <script src="/js/controllers/configuration.js"></script>
 </head>
 
 <body>
@@ -27,11 +35,11 @@
                                         Inicio <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="start-button">
-                                        <li role="menuitem"><a href="">Ventas</a></li>
+                                        <li role="menuitem"><a href="ventas">Ventas</a></li>
                                         <li class="divider"></li>
-                                        <li role="menuitem"><a href="">Clientes</a></li>
-                                        <li role="menuitem"><a href="">Artículos</a></li>
-                                        <li role="menuitem"><a href="">Configuración</a></li>
+                                        <li role="menuitem"><a href="clientes">Clientes</a></li>
+                                        <li role="menuitem"><a href="articulos">Artículos</a></li>
+                                        <li role="menuitem"><a href="configuracion">Configuración</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -43,6 +51,9 @@
                 </div>
             </div>
         </nav>
+        <div class="view-animate-container">
+            <div ng-view class="view-animate"></div>
+        </div>
     </div>
 </body>
 
