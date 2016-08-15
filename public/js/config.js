@@ -19,7 +19,7 @@ app.config(['$routeProvider', '$locationProvider',
             .when('/configuracion', {
                 templateUrl: '/views/configuration.html',
                 controller: 'configurationController',
-                controllerAs: 'configuration'
+                controllerAs: 'conf'
             })
             .otherwise('/');
 
