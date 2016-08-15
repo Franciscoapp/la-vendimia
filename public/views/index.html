@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="es" ng-app="app">
 
 <head>
     <meta charset="UTF-8">
@@ -7,10 +7,13 @@
     <base href="/">
     <title>La Vendimia</title>
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/index.css">
     <script src="/angular/angular.js"></script>
     <script src="/angular-route/angular-route.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/angular-touch/angular-touch.js"></script>
+    <script src="/jquery/dist/jquery.min.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script src="/moment/min/moment.min.js"></script>
     <script src="/js/app.js"></script>
@@ -24,34 +27,31 @@
 
 <body>
     <div ng-controller="mainController as main">
+        <div align="right">
+            <h3 class="header">La Vendimia</h3>
+            <img class="logo" src="/img/logo.png" alt="logo">
+        </div>
         <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <form class="navbar-form navbar-left">
-                            <div class="form-group">
-                                <div class="btn-group" uib-dropdown is-open="status.isopen">
-                                    <button id="start-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-                                        Inicio <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="start-button">
-                                        <li role="menuitem"><a href="ventas">Ventas</a></li>
-                                        <li class="divider"></li>
-                                        <li role="menuitem"><a href="clientes">Clientes</a></li>
-                                        <li role="menuitem"><a href="articulos">Artículos</a></li>
-                                        <li role="menuitem"><a href="configuracion">Configuración</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a>Fecha: {{ main.date }}</a></li>
-                    </ul>
-                </div>
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inicio <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li role="menuitem"><a href="ventas">Ventas</a></li>
+                            <li class="divider"></li>
+                            <li role="menuitem"><a href="clientes">Clientes</a></li>
+                            <li role="menuitem"><a href="articulos">Artículos</a></li>
+                            <li role="menuitem"><a href="configuracion">Configuración</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Fecha: {{ main.date }}</a></li>
+                </ul>
             </div>
         </nav>
-        <div class="view-animate-container">
+        <div class="container view-animate-container">
             <div ng-view class="view-animate"></div>
         </div>
     </div>

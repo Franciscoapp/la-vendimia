@@ -1,0 +1,12 @@
+h3.header {
+    margin-right: 72px;
+    color: green;
+}
+
+img.logo {
+    position: absolute;
+    z-index: 5;
+    height: 50px;
+    top: 22px;
+    right: 10px;
+}
