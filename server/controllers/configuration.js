@@ -1,6 +1,7 @@
 var Configuration = require('../models/configuration');
 
 module.exports.configuration = function(app) {
+    
     app.get("/configuration/:id", function(req, res) {
         Configuration.findById(req.params.id).then(function(result) {
         	res.send(result);

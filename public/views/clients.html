@@ -1,1 +1,20 @@
-clients.html
+<div class="pull-right">
+    <button type="button" class="btn btn-success" aria-label="Left Align" ng-click="clients.addClient()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <span>Nuevo Cliente</span>
+    </button>
+</div>
+<h3>Clientes Registrados</h3>
+<hr>
+<table class="table">
+  <thead class="background-blue">
+  	<th>Clave Cliente</th>
+  	<th>Nombre</th>
+  </thead>
+  <tbody class="table-hover">
+  	<tr ng-repeat="client in clients.clients">
+  		<td class="col-md-1">{{ client.id }}</td>
+  		<td class="col-md-6">{{ client.name }} {{ client.last_name }} {{client.mother_last_name}}</td>
+  	</tr>
+  </tbody>
+</table>
