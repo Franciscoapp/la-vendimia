@@ -2,6 +2,7 @@ app.controller('configurationController', ['$routeParams', 'Configuration', '$q'
     function configurationController($routeParams, Configuration, $q) {
         var conf = this;
         conf.$routeParams = $routeParams;
+        conf.alerts = [];
 
         var getConfiguration = function() {
             var deferred = $q.defer();
@@ -40,11 +41,21 @@ app.controller('configurationController', ['$routeParams', 'Configuration', '$q'
         conf.save = function() {
             if (validateInputs()) {
                 Configuration.save(conf.inputs, function(configuration) {
-                    alert('“Bien Hecho. La configuración ha sido registrada".');
+                    conf.alerts.push({
+                        text: 'Bien Hecho. La configuración ha sido registrada',
+                        type: 'success'
+                    });
                 });
             } else {
-                console.log('Incorrect...');
+                conf.alerts.push({
+                    text: 'Los datos ingresados son incorrectos',
+                    type: 'danger'
+                });
             }
+        };
+
+        conf.removeAlert = function(index) {
+            conf.alerts.splice(index, 1);
         };
 
         initializeData();

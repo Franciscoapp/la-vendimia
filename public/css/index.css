@@ -10,3 +10,11 @@ img.logo {
     top: 22px;
     right: 10px;
 }
+
+.pointer {
+	cursor: pointer;
+}
+
+.background-blue {
+	background-color: #5bc0de;
+}
