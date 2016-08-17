@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `lavendimia`.`configuration` (
   `rate` DECIMAL(16,6) NOT NULL,
   `hitch` DECIMAL(16,6) NOT NULL,
   `deadline` DECIMAL(16,6) NOT NULL,
+configuration
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
