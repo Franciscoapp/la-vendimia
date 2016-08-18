@@ -5,3 +5,9 @@ app.factory('Client', ['$resource',
         }, {}, { query: { method: 'GET', isArray: true } });
     }
 ]);
+
+app.factory('ClientNextId', ['$resource',
+    function($resource) {
+        return $resource('/client/nextId');
+    }
+]);
