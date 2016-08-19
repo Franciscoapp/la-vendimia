@@ -1,1 +1,24 @@
-articles.html
+<div class="alert alert-{{ alert.type }}" role="alert" ng-repeat="alert in articles.alerts">{{ alert.text }}</div>
+<div class="pull-right">
+    <button type="button" class="btn btn-success" aria-label="Left Align" ng-click="articles.openModal()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <span>Nuevo Artículo</span>
+    </button>
+</div>
+<h3>Artículos Registrados</h3>
+<hr>
+<table class="table table-hover">
+  <thead class="background-blue">
+  	<th>Clave Artículo</th>
+  	<th>Descripción</th>
+  </thead>
+  <tbody>
+  	<tr ng-repeat="article in articles.articles">
+  		<td class="col-md-1 numeric">{{ article.key }}</td>
+  		<td class="col-md-9">
+  			{{ article.description }}
+  			<span class="glyphicon glyphicon-pencil pointer pull-right" ng-click="articles.openModal(article)"></span>
+  		</td>
+  	</tr>
+  </tbody>
+</table>

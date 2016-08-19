@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{ articleModal.title }}</h3>
+</div>
+<div class="modal-body">
+    <div class="alert alert-{{ alert.type }}" role="alert" ng-repeat="alert in articleModal.alerts">{{ alert.text }}</div>
+    <form class="form-horizontal" name="articleForm">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Clave:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="name" ng-model="articleModal.key" disabled="disabled">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-3 control-label">Descripción</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="description" ng-model="articleModal.article.description" placeholder="Descripción" maxlength="45" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="model" class="col-sm-3 control-label">Modelo</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="model" ng-model="articleModal.article.model" placeholder="Modelo" maxlength="45" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price" class="col-sm-3 control-label">Precio</label>
+            <div class="col-sm-8">
+                <input type="number" class="form-control" id="price" ng-model="articleModal.article.price" placeholder="Precio" step="0.0001" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="existence" class="col-sm-3 control-label">Existencia</label>
+            <div class="col-sm-8">
+                <input type="number" class="form-control" id="existence" ng-model="articleModal.article.existence" placeholder="Existencia" required>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer modal-footer">
+    <button class="btn btn-success" type="button" ng-click="articleModal.save()">Guardar</button>
+    <button class="btn btn-default" type="button" ng-click="articleModal.cancel()">Cancelar</button>
+</div>

@@ -1,31 +1,31 @@
 var Sequelize = require('Sequelize');
 var db = new Sequelize('mysql://root@localhost:3306/lavendimia');
 
-var Client = db.define('client', {
+var Article = db.define('article', {
     id: {
         type: Sequelize.INTEGER,
         field: 'id',
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
+    description: {
         type: Sequelize.STRING(45),
-        field: 'name'
+        field: 'description'
     },
-    last_name: {
+    model: {
         type: Sequelize.STRING(45),
-        field: 'last_name'
+        field: 'model'
     },
-    mother_last_name: {
-        type: Sequelize.STRING(45),
-        field: 'mother_last_name'
+    price: {
+        type: Sequelize.DECIMAL(16,6),
+        field: 'price'
     },
-    rfc: {
-        type: Sequelize.STRING(13),
-        field: 'rfc'
+    existence: {
+        type: Sequelize.INTEGER,
+        field: 'existence'
     }
 }, {
     freezeTableName: true
 });
 
-module.exports = Client;
+module.exports = Article;

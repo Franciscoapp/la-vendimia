@@ -3,6 +3,7 @@ app.controller('clientsController', ['$routeParams', '$q', 'Client', '$uibModal'
         var clients = this;
         clients.$routeParams = $routeParams;
         clients.alerts = [];
+        clients.clients = [];
 
         var getClients = function() {
             var deferred = $q.defer();

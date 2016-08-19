@@ -67,6 +67,5 @@ app.controller('ModalClientController',
             $uibModalInstance.dismiss('cancel');
         };
 
-
         initializeData();
     });
