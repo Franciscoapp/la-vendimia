@@ -1,5 +1,5 @@
-app.controller('configurationController', ['$routeParams', 'Configuration', '$q',
-    function configurationController($routeParams, Configuration, $q) {
+app.controller('configurationController', ['$routeParams', 'Configuration', '$q', '$scope',
+    function configurationController($routeParams, Configuration, $q, $scope) {
         var conf = this;
         conf.$routeParams = $routeParams;
         conf.alerts = [];
@@ -52,10 +52,10 @@ app.controller('configurationController', ['$routeParams', 'Configuration', '$q'
                     type: 'danger'
                 });
             }
-        };
-
-        conf.removeAlert = function(index) {
-            conf.alerts.splice(index, 1);
+            setTimeout(function() {
+                conf.alerts.shift();
+                $scope.$apply();
+            }, 3000);
         };
 
         initializeData();

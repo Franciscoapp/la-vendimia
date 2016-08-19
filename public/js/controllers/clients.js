@@ -1,11 +1,14 @@
-app.controller('clientsController', ['$routeParams', '$q', 'Client', '$uibModal', 'ClientNextId',
-    function clientsController($routeParams, $q, Client, $uibModal, ClientNextId) {
+app.controller('clientsController', ['$routeParams', '$q', 'Client', '$uibModal', 'ClientNextId', 'Utils',
+    function clientsController($routeParams, $q, Client, $uibModal, ClientNextId, Utils) {
         var clients = this;
         clients.$routeParams = $routeParams;
 
         var getClients = function() {
             var deferred = $q.defer();
             Client.query({}, function(result) {
+            	_.each(result, function (client) {
+            		client.key = Utils.pad(client.id, 4);
+            	});
                 clients.clients = result;
                 deferred.resolve(true);
             });

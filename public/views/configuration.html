@@ -1,4 +1,4 @@
-<div class="alert alert-{{ alert.type }}" role="alert" ng-repeat="alert in conf.alerts">{{ alert.text }} <span class="glyphicon glyphicon-remove pull-right pointer" ng-click="conf.removeAlert($index)"></span></div>
+<div class="alert alert-{{ alert.type }}" role="alert" ng-repeat="alert in conf.alerts">{{ alert.text }}</div>
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Configuración General</h3>
@@ -8,19 +8,19 @@
             <div class="form-group">
                 <label for="tasa-financiamiento" class="col-sm-2 control-label">Tasa Financiamiento</label>
                 <div class="col-sm-2">
-                    <input type="number" id="tasa-financiamiento" class="form-control" ng-model="conf.inputs.rate" min="0" max="99" required>
+                    <input type="number" id="tasa-financiamiento" class="form-control numeric" ng-model="conf.inputs.rate" min="0" max="99" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="enganche" class="col-sm-2 control-label">% Enganche</label>
                 <div class="col-sm-2">
-                    <input type="number" id="enganche" class="form-control" ng-model="conf.inputs.hitch" min="0" max="99" required>
+                    <input type="number" id="enganche" class="form-control numeric" ng-model="conf.inputs.hitch" min="0" max="99" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="plazo-maximo" class="col-sm-2 control-label">Plazo Máximo</label>
                 <div class="col-sm-2">
-                    <input type="number" id="plazo-maximo" class="form-control" ng-model="conf.inputs.deadline" min="0" max="99" required>
+                    <input type="number" id="plazo-maximo" class="form-control numeric" ng-model="conf.inputs.deadline" min="0" max="99" required>
                 </div>
             </div>
             <div class="form-group">

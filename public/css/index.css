@@ -18,3 +18,7 @@ img.logo {
 .background-blue {
 	background-color: #5bc0de;
 }
+
+.numeric {
+	text-align: right;
+}

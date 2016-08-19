@@ -2,6 +2,7 @@
     <h3 class="modal-title">{{ clientModal.title }}</h3>
 </div>
 <div class="modal-body">
+    <div class="alert alert-{{ alert.type }}" role="alert" ng-repeat="alert in clientModal.alerts">{{ alert.text }}</div>
     <form class="form-horizontal" name="clientForm">
         <div class="form-group">
             <label class="col-sm-3 control-label">Clave:</label>
@@ -12,25 +13,25 @@
         <div class="form-group">
             <label for="name" class="col-sm-3 control-label">Nombre</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="name" ng-model="clientModal.client.name" placeholder="Nombre">
+                <input type="text" class="form-control" id="name" ng-model="clientModal.client.name" placeholder="Nombre" maxlength="45" required>
             </div>
         </div>
         <div class="form-group">
             <label for="lastName" class="col-sm-3 control-label">Apellido Paterno</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="lastName" ng-model="clientModal.client.last_name" placeholder="Apellido Paterno">
+                <input type="text" class="form-control" id="lastName" ng-model="clientModal.client.last_name" placeholder="Apellido Paterno" maxlength="45" required>
             </div>
         </div>
         <div class="form-group">
             <label for="motherLastName" class="col-sm-3 control-label">Apellido Materno</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="motherLastName" ng-model="clientModal.client.mother_last_name" placeholder="Apellido Materno">
+                <input type="text" class="form-control" id="motherLastName" ng-model="clientModal.client.mother_last_name" placeholder="Apellido Materno" maxlength="45" required>
             </div>
         </div>
         <div class="form-group">
             <label for="rfc" class="col-sm-3 control-label">RFC</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="rfc" ng-model="clientModal.client.rfc" placeholder="RFC" max="13">
+                <input type="text" class="form-control" id="rfc" ng-model="clientModal.client.rfc" placeholder="RFC" minlength="13" maxlength="13" required>
             </div>
         </div>
     </form>
