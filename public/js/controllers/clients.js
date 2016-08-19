@@ -1,7 +1,8 @@
-app.controller('clientsController', ['$routeParams', '$q', 'Client', '$uibModal', 'ClientNextId', 'Utils',
-    function clientsController($routeParams, $q, Client, $uibModal, ClientNextId, Utils) {
+app.controller('clientsController', ['$routeParams', '$q', 'Client', '$uibModal', 'ClientNextId', 'Utils', '$scope',
+    function clientsController($routeParams, $q, Client, $uibModal, ClientNextId, Utils, $scope) {
         var clients = this;
         clients.$routeParams = $routeParams;
+        clients.alerts = [];
 
         var getClients = function() {
             var deferred = $q.defer();
@@ -17,6 +18,14 @@ app.controller('clientsController', ['$routeParams', '$q', 'Client', '$uibModal'
 
         var saveClient = function(client) {
             Client.save(client, function(savedClient) {
+            	clients.alerts.push({
+                    text: 'Bien Hecho. El cliente ha sido registrado correctamente',
+                    type: 'success'
+                });
+                setTimeout(function() {
+                    clients.alerts.shift();
+                    $scope.$apply();
+                }, 3000);
                 getClients();
             });
         };
@@ -38,7 +47,7 @@ app.controller('clientsController', ['$routeParams', '$q', 'Client', '$uibModal'
             });
 
             modalInstance.result.then(function(newClient) {
-                saveClient(newClient);
+                saveClient(newClient, !!id);
             });
         };
 

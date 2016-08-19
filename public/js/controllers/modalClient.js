@@ -20,18 +20,38 @@ app.controller('ModalClientController',
             }
         }
 
+        var addAlert = function(text, type) {
+            clientModal.alerts.push({
+                text: text,
+                type: type
+            });
+            setTimeout(function() {
+                clientModal.alerts.shift();
+                $scope.$apply();
+            }, 3000);
+        };
+
         var validateData = function() {
             var response = true;
-            if (!Utils.validateRFC(clientModal.client.rfc)) {
+            if (!clientModal.client.name) {
                 response = false;
-                clientModal.alerts.push({
-                    text: 'El RFC es incorrecto',
-                    type: 'danger'
-                });
-                setTimeout(function() {
-                    clientModal.alerts.shift();
-                    $scope.$apply();
-                }, 3000);
+                addAlert('No es posible continuar, debe ingresar Nombre es obligatorio', 'danger');
+            }
+            if (!clientModal.client.last_name) {
+                response = false;
+                addAlert('No es posible continuar, debe ingresar Apellido Paterno es obligatorio', 'danger');
+            }
+            if (!clientModal.client.mother_last_name) {
+                response = false;
+                addAlert('No es posible continuar, debe ingresar Apellido Materno es obligatorio', 'danger');
+            }
+            if (!clientModal.client.rfc) {
+                response = false;
+                addAlert('No es posible continuar, debe ingresar RFC es obligatorio', 'danger');
+            }
+            if (clientModal.client.rfc && !Utils.validateRFC(clientModal.client.rfc)) {
+                response = false;
+                addAlert('No es posible continuar, el RFC es incorrecto', 'danger');
             }
             return response;
         };
