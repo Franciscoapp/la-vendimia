@@ -9,11 +9,28 @@ module.exports.article = function(app) {
     });
 
     app.get("/article/nextId", function(req, res) {
-        Article.findOne({ order: [
+        Article.findOne({
+            order: [
                 ['id', 'DESC']
-            ] }).then(function(result) {
+            ]
+        }).then(function(result) {
             var id = result ? result.id + 1 : 1;
             res.send({ id: id });
+        });
+    });
+
+    app.get("/article/findByDescription", function(req, res) {
+        Article.findAll({
+            order: [
+                ['description', 'ASC']
+            ],
+            where: {
+                description: {
+                    like: '%' + req.query.text + '%'
+                }
+            }
+        }).then(function(result) {
+            res.send({ articles: result });
         });
     });
 

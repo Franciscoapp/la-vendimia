@@ -39,9 +39,54 @@ app.controller('ModalSaleController',
                     name: text
                 }
             }).then(function(response) {
-                return response.data.clients;
+                return response.data.clients.map(function(client) {
+                    client.key = Utils.pad(client.id);
+                    return client;
+                });
             });
         };
 
+        saleModal.selectClient = function(client) {
+            if (client) {
+                saleModal.sale.client_id = client.id;
+                saleModal.sale.client_name = client.name + ' ' + client.last_name + ' ' + client.mother_last_name;
+                saleModal.clientRFC = client.rfc;
+            } else {
+                saleModal.cleanUser();
+            }
+        };
+
+        saleModal.cleanClient = function() {
+            saleModal.sale.client_id = '';
+            saleModal.sale.client_name = '';
+            saleModal.clientRFC = '';
+        };
+
+        saleModal.getArticle = function(text) {
+            return $http.get('/article/findByDescription', {
+                params: {
+                    text: text
+                }
+            }).then(function(response) {
+                return response.data.articles;
+            });
+        };
+
+        saleModal.selectArticle = function(article) {
+            if (article) {
+                saleModal.selectedArticle = article;
+            } else {
+                saleModal.cleanArticle();
+            }
+        };
+
+        saleModal.cleanArticle = function() {
+            saleModal.selectedArticle = '';
+        };
+
+        saleModal.addArticle = function () {
+        	// body...
+        };
+        
         initializeData();
     });

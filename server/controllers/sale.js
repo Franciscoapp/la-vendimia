@@ -9,9 +9,11 @@ module.exports.sale = function(app) {
     });
 
     app.get("/sale/nextId", function(req, res) {
-        Sale.findOne({ order: [
+        Sale.findOne({
+            order: [
                 ['id', 'DESC']
-            ] }).then(function(result) {
+            ]
+        }).then(function(result) {
             var id = result ? result.id + 1 : 1;
             res.send({ id: id });
         });
