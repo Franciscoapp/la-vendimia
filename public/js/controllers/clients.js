@@ -48,7 +48,7 @@ app.controller('clientsController', ['$routeParams', '$q', 'Client', '$uibModal'
             });
 
             modalInstance.result.then(function(newClient) {
-                saveClient(newClient, !!id);
+                saveClient(newClient);
             });
         };
 

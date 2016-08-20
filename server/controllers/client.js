@@ -9,11 +9,37 @@ module.exports.client = function(app) {
     });
 
     app.get("/client/nextId", function(req, res) {
-        Client.findOne({ order: [
+        Client.findOne({
+            order: [
                 ['id', 'DESC']
-            ] }).then(function(result) {
+            ]
+        }).then(function(result) {
             var id = result ? result.id + 1 : 1;
             res.send({ id: id });
+        });
+    });
+
+    app.get("/client/findByName", function(req, res) {
+        var name = '%' + req.query.name + '%';
+        Client.findAll({
+            order: [
+                ['name', 'ASC']
+            ],
+            where: {
+                $or: {
+                    name: {
+                        $like: name
+                    },
+                    last_name: {
+                        $like: name
+                    },
+                    mother_last_name: {
+                        $like: name
+                    }
+                }
+            }
+        }).then(function(result) {
+            res.send({ clients: result });
         });
     });
 

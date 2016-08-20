@@ -48,7 +48,7 @@ app.controller('articlesController', ['$routeParams', '$q', 'Article', '$uibModa
             });
 
             modalInstance.result.then(function(newArticle) {
-                saveArticle(newArticle, !!id);
+                saveArticle(newArticle);
             });
         };
 

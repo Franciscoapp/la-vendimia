@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h3 class="modal-title">Registro de Ventas</h3>
+</div>
+<div class="modal-body">
+    <div class="alert alert-{{ alert.type }}" role="alert" ng-repeat="alert in saleModal.alerts">{{ alert.text }}</div>
+    <form class="form-horizontal" name="articleForm">
+        <div class="form-group">
+            <label class="col-sm-10 control-label">Clave:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control numeric" id="name" ng-model="saleModal.key" disabled="disabled">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Cliente:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="saleModal.selectedClient" placeholder="Cliente" uib-typeahead="client.name + ' ' + client.last_name + ' ' + client.mother_last_name for client in saleModal.getClient($viewValue)" typeahead-min-length="3">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer modal-footer">
+    <button class="btn btn-success" type="button" ng-click="saleModal.save()">Guardar</button>
+    <button class="btn btn-default" type="button" ng-click="saleModal.cancel()">Cancelar</button>
+</div>

@@ -1,6 +1,27 @@
+<div class="alert alert-{{ alert.type }}" role="alert" ng-repeat="alert in sales.alerts">{{ alert.text }}</div>
 <div class="pull-right">
-    <button type="button" class="btn btn-success" aria-label="Left Align">
+    <button type="button" class="btn btn-success" aria-label="Left Align" ng-click="sales.openModal()">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         <span>Nueva Venta</span>
     </button>
 </div>
+<h3>Ventas Activas</h3>
+<hr>
+<table class="table table-hover">
+    <thead class="background-blue">
+        <th>Folio Venta</th>
+        <th>Clave Cliente</th>
+        <th>Nombre</th>
+        <th>Total</th>
+        <th>Fecha</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="sale in sales.sales">
+            <td class="numeric">{{ sale.key }}</td>
+            <td class="numeric">{{ sale.client_id }}</td>
+            <td>{{ sale.client_name }}</td>
+            <td class="numeric">{{ sale.total }}</td>
+            <td>{{ sale.date }}</td>
+        </tr>
+    </tbody>
+</table>

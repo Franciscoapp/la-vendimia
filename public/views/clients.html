@@ -8,17 +8,17 @@
 <h3>Clientes Registrados</h3>
 <hr>
 <table class="table table-hover">
-  <thead class="background-blue">
-  	<th>Clave Cliente</th>
-  	<th>Nombre</th>
-  </thead>
-  <tbody>
-  	<tr ng-repeat="client in clients.clients">
-  		<td class="col-md-1 numeric">{{ client.key }}</td>
-  		<td class="col-md-9">
-  			{{ client.name }} {{ client.last_name }} {{client.mother_last_name}}
-  			<span class="glyphicon glyphicon-pencil pointer pull-right" ng-click="clients.openModal(client)"></span>
-  		</td>
-  	</tr>
-  </tbody>
+    <thead class="background-blue">
+        <th>Clave Cliente</th>
+        <th>Nombre</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="client in clients.clients">
+            <td class="col-md-1 numeric">{{ client.key }}</td>
+            <td class="col-md-9">
+                {{ client.name }} {{ client.last_name }} {{client.mother_last_name}}
+                <span class="glyphicon glyphicon-pencil pointer pull-right" ng-click="clients.openModal(client)"></span>
+            </td>
+        </tr>
+    </tbody>
 </table>
