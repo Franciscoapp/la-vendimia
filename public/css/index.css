@@ -22,3 +22,8 @@ img.logo {
 .numeric {
 	text-align: right;
 }
+
+input.quantity {
+    width: 64px;
+    max-width: 64px;
+}
