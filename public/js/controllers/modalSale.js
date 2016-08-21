@@ -143,21 +143,27 @@ app.controller('ModalSaleController',
         };
 
         saleModal.addArticle = function() {
-            if (saleModal.selectedArticle) {
-                if (saleModal.selectedArticle.existence) {
-                    var newArticle = angular.copy(saleModal.selectedArticle);
-                    newArticle.quantity = 1;
-                    newArticle.calculatedPrice = calculateArticlePrice(newArticle);
-                    newArticle.amount = newArticle.price * newArticle.quantity;
-                    saleModal.articles.push(newArticle);
-                    calculateInfo();
+            if (saleModal.configuration.rate) {
+                if (saleModal.selectedArticle) {
+                    if (saleModal.selectedArticle.existence) {
+
+                        var newArticle = angular.copy(saleModal.selectedArticle);
+                        newArticle.quantity = 1;
+                        newArticle.calculatedPrice = calculateArticlePrice(newArticle);
+                        newArticle.amount = newArticle.price * newArticle.quantity;
+                        saleModal.articles.push(newArticle);
+                        calculateInfo();
+
+                    } else {
+                        addAlert('El artículo seleccionado no cuenta con existencia, favor de verificar', 'danger');
+                    }
+                    saleModal.cleanArticle();
+                    saleModal.selectedArticleText = '';
                 } else {
-                    addAlert('El artículo seleccionado no cuenta con existencia, favor de verificar', 'danger');
+                    addAlert('No a seleccionado un artículo', 'danger');
                 }
-                saleModal.cleanArticle();
-                saleModal.selectedArticleText = '';
             } else {
-                addAlert('No a seleccionado un artículo', 'danger');
+                addAlert('No cuenta con datos de configuración', 'danger');
             }
         };
 
@@ -177,13 +183,16 @@ app.controller('ModalSaleController',
         };
 
         saleModal.next = function() {
-            if (saleModal.sale.client_id && saleModal.articles.length) {
-                saleModal.monthlyPaymentsSection = true;
-                createMonthlyPayments();
+            if (saleModal.configuration.rate) {
+                if (saleModal.sale.client_id && saleModal.articles.length) {
+                    saleModal.monthlyPaymentsSection = true;
+                    createMonthlyPayments();
+                } else {
+                    addAlert('Los datos ingresados no son correctos, favor de verificar', 'danger');
+                }
             } else {
-                addAlert('Los datos ingresados no son correctos, favor de verificar', 'danger');
+                addAlert('No cuenta con datos de configuración', 'danger');
             }
-
         };
 
         initializeData();
