@@ -77,8 +77,12 @@ app.controller('ModalSaleController',
                     savingAmount: savingAmount.toFixed(2)
                 };
             });
+        };
 
-
+        var checkArticle = function(articleId) {
+            return _.find(saleModal.articles, function(article) {
+                return articleId == article.id;
+            });
         };
 
         saleModal.save = function() {
@@ -145,17 +149,20 @@ app.controller('ModalSaleController',
         saleModal.addArticle = function() {
             if (saleModal.configuration.rate) {
                 if (saleModal.selectedArticle) {
-                    if (saleModal.selectedArticle.existence) {
-
-                        var newArticle = angular.copy(saleModal.selectedArticle);
-                        newArticle.quantity = 1;
-                        newArticle.calculatedPrice = calculateArticlePrice(newArticle);
-                        newArticle.amount = newArticle.price * newArticle.quantity;
-                        saleModal.articles.push(newArticle);
-                        calculateInfo();
-
+                    if (checkArticle(saleModal.selectedArticle.id)) {
+                        addAlert('El artículo ya se encuentra en la lista', 'danger');
                     } else {
-                        addAlert('El artículo seleccionado no cuenta con existencia, favor de verificar', 'danger');
+                        if (saleModal.selectedArticle.existence) {
+                            var newArticle = angular.copy(saleModal.selectedArticle);
+                            newArticle.quantity = 1;
+                            newArticle.calculatedPrice = calculateArticlePrice(newArticle);
+                            newArticle.amount = newArticle.price * newArticle.quantity;
+                            saleModal.articles.push(newArticle);
+                            calculateInfo();
+
+                        } else {
+                            addAlert('El artículo seleccionado no cuenta con existencia, favor de verificar', 'danger');
+                        }
                     }
                     saleModal.cleanArticle();
                     saleModal.selectedArticleText = '';
