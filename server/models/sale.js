@@ -12,10 +12,6 @@ var Sale = db.define('sale', {
         type: Sequelize.INTEGER,
         field: 'client_id'
     },
-    client_name: {
-        type: Sequelize.STRING(45),
-        field: 'client_name'
-    },
     total: {
         type: Sequelize.DECIMAL(16,4),
         field: 'total'

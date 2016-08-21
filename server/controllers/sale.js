@@ -1,9 +1,13 @@
 var Sale = require('../models/sale');
+var Client = require('../models/client');
 
 module.exports.sale = function(app) {
 
     app.get("/sale/", function(req, res) {
-        Sale.findAll({}).then(function(result) {
+        Client.hasMany(Sale, { foreignKey: 'id' })
+        Sale.belongsTo(Client, { foreignKey: 'client_id' })
+
+        Sale.findAll({ include: [Client] }).then(function(result) {
             res.send(result);
         });
     });

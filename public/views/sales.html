@@ -19,8 +19,8 @@
         <tr ng-repeat="sale in sales.sales">
             <td class="numeric">{{ sale.key }}</td>
             <td class="numeric">{{ sale.client_id }}</td>
-            <td>{{ sale.client_name }}</td>
-            <td class="numeric">{{ sale.total }}</td>
+            <td>{{ sale.client.name + ' ' + sale.client.last_name + ' ' + sale.client.mother_last_name }}</td>
+            <td class="numeric">${{ sale.total }}</td>
             <td>{{ sale.date }}</td>
         </tr>
     </tbody>

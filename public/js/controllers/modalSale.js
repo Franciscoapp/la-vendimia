@@ -19,7 +19,6 @@ app.controller('ModalSaleController',
                 saleModal.articles = [];
                 saleModal.sale = {
                     client_id: '',
-                    client_name: '',
                     total: 0,
                     date: moment().format('YYYY-MM-DD')
                 };
@@ -110,7 +109,6 @@ app.controller('ModalSaleController',
         saleModal.selectClient = function(client) {
             if (client) {
                 saleModal.sale.client_id = client.id;
-                saleModal.sale.client_name = client.name + ' ' + client.last_name + ' ' + client.mother_last_name;
                 saleModal.clientRFC = client.rfc;
             } else {
                 saleModal.cleanClient();
@@ -119,7 +117,6 @@ app.controller('ModalSaleController',
 
         saleModal.cleanClient = function() {
             saleModal.sale.client_id = '';
-            saleModal.sale.client_name = '';
             saleModal.clientRFC = '';
         };
 
