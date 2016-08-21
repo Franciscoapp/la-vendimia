@@ -3,7 +3,7 @@
 </div>
 <div class="modal-body">
     <div class="alert alert-{{ alert.type }}" role="alert" ng-repeat="alert in saleModal.alerts">{{ alert.text }}</div>
-    <form class="form-horizontal" name="articleForm">
+    <form class="form-horizontal" name="articleForm" ng-if="!saleModal.monthlyPaymentsSection">
         <div class="form-group">
             <label class="col-sm-10 control-label">Clave:</label>
             <div class="col-sm-2">
@@ -69,8 +69,23 @@
             </div>
         </div>
     </form>
+    <table class="table table-hover" ng-if="saleModal.monthlyPaymentsSection">
+        <thead class="background-blue">
+            <th class="center" colspan="5">Abonos Mensuales</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="term in saleModal.terms">
+                <td>{{ term.number }} ABONOS DE</td>
+                <td>${{ term.paymentAmount }}</td>
+                <td>TOTAL A PAGAR ${{ term.totalPay }}</td>
+                <td>SE AHORRA ${{ term.savingAmount }}</td>
+                <td><input type="radio" class="pointer" ng-model="saleModal.sale.total" ng-value="term.totalPay"></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div class="modal-footer modal-footer">
-    <button class="btn btn-success" type="button" ng-click="saleModal.save()">Guardar</button>
+    <button class="btn btn-success" type="button" ng-click="saleModal.next()" ng-if="!saleModal.monthlyPaymentsSection">Siguiente</button>
+    <button class="btn btn-success" type="button" ng-click="saleModal.save()" ng-if="saleModal.monthlyPaymentsSection">Guardar</button>
     <button class="btn btn-default" type="button" ng-click="saleModal.cancel()">Cancelar</button>
 </div>

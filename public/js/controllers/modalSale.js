@@ -21,7 +21,7 @@ app.controller('ModalSaleController',
                     client_id: '',
                     client_name: '',
                     total: 0,
-                    date: ''
+                    date: moment().format('YYYY-MM-DD')
                 };
                 saleModal.info = {
                     hitch: '0.00',
@@ -61,8 +61,33 @@ app.controller('ModalSaleController',
             saleModal.info.total = total.toFixed(2);
         };
 
+        var createMonthlyPayments = function() {
+            var totalDebt = parseFloat(saleModal.info.total);
+            var payCash = totalDebt / (1 + (saleModal.configuration.rate * saleModal.configuration.deadline / 100));
+            var terms = [3, 6, 9, 12];
+
+            saleModal.terms = terms.map(function(term) {
+                var totalPay = payCash * (1 + (saleModal.configuration.rate * term / 100));
+                var paymentAmount = totalPay / term;
+                var savingAmount = totalDebt - totalPay;
+
+                return {
+                    number: term,
+                    paymentAmount: paymentAmount.toFixed(2),
+                    totalPay: totalPay.toFixed(2),
+                    savingAmount: savingAmount.toFixed(2)
+                };
+            });
+
+
+        };
+
         saleModal.save = function() {
-            $uibModalInstance.close(saleModal.sale);
+            if (saleModal.sale.total) {
+                $uibModalInstance.close(saleModal.sale);
+            } else {
+                addAlert('Debe seleccionar un plazo para realizar el pago de su compra', 'danger');
+            }
         };
 
         saleModal.cancel = function() {
@@ -88,7 +113,7 @@ app.controller('ModalSaleController',
                 saleModal.sale.client_name = client.name + ' ' + client.last_name + ' ' + client.mother_last_name;
                 saleModal.clientRFC = client.rfc;
             } else {
-                saleModal.cleanUser();
+                saleModal.cleanClient();
             }
         };
 
@@ -149,9 +174,19 @@ app.controller('ModalSaleController',
             calculateInfo();
         };
 
-        saleModal.removeArticle = function (index) {
-        	saleModal.articles.splice(index, 1);
-        	calculateInfo();
+        saleModal.removeArticle = function(index) {
+            saleModal.articles.splice(index, 1);
+            calculateInfo();
+        };
+
+        saleModal.next = function() {
+            if (saleModal.sale.client_id && saleModal.articles.length) {
+                saleModal.monthlyPaymentsSection = true;
+                createMonthlyPayments();
+            } else {
+                addAlert('Los datos ingresados no son correctos, favor de verificar', 'danger');
+            }
+
         };
 
         initializeData();
