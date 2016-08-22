@@ -3,9 +3,6 @@
     "version": "1.0.0",
     "description": "Examen",
     "main": "server.js",
-    "scripts": {
-        "start": "node server.js"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Franciscoapp/la-vendimia.git"
