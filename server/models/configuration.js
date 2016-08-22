@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('mysql://root@localhost:3306/lavendimia');
+var db = new Sequelize('mysql://root@2001:4860:4864:1:9f47:b101:c280:90e2/lavendimia');
 
 var Configuration = db.define('configuration', {
     id: {
