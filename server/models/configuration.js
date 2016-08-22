@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('mysql://franciscoapp:123456@http://www.db4free.net:3306/lavendimia');
+var db = new Sequelize('mysql://franciscoapp:123456@www.db4free.net:3306/lavendimia');
 
 var Configuration = db.define('configuration', {
     id: {
