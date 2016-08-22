@@ -1,4 +1,4 @@
-var Sequelize = require('../../node_modules/sequelize/index');
+var Sequelize = require('sequelize');
 var db = new Sequelize('mysql://root@localhost:3306/lavendimia');
 
 var Article = db.define('article', {

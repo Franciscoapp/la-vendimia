@@ -1,4 +1,4 @@
-var Sequelize = require('Sequelize');
+var Sequelize = require('sequelize');
 var db = new Sequelize('mysql://root@localhost:3306/lavendimia');
 
 var Configuration = db.define('configuration', {
