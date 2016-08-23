@@ -156,7 +156,7 @@ app.controller('ModalSaleController',
                             var newArticle = angular.copy(saleModal.selectedArticle);
                             newArticle.quantity = 1;
                             newArticle.calculatedPrice = calculateArticlePrice(newArticle);
-                            newArticle.amount = newArticle.price * newArticle.quantity;
+                            newArticle.amount = newArticle.calculatedPrice * newArticle.quantity;
                             saleModal.articles.push(newArticle);
                             calculateInfo();
 
