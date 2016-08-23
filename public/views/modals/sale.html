@@ -44,7 +44,7 @@
                     <td class="">
                         <input type="number" class="numeric quantity" ng-model="article.quantity" ng-change="saleModal.calculateArticleAmout(article)" min="1" max="{{ article.existence }}">
                     </td>
-                    <td class="numeric">{{ article.price.toFixed(2) }}</td>
+                    <td class="numeric">{{ article.calculatedPrice.toFixed(2) }}</td>
                     <td class="numeric">{{ article.amount.toFixed(2) }}</td>
                     <td><span class="glyphicon glyphicon-remove pointer pull-right" ng-click="saleModal.removeArticle($index)"></span></td>
                 </tr>
